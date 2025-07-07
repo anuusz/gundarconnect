@@ -11,7 +11,7 @@
         </div>
       </div>
       <div class="post-info">
-        <h4 class="post-author">John Doe</h4>
+        <span class="post-author">{{ post.author?.fullName || post.author?.username || '-' }}</span>
         <span class="post-time">{{ post.timestamp }}</span>
       </div>
       <div class="post-menu">
@@ -22,6 +22,9 @@
             />
           </svg>
         </button>
+        <div v-if="showMenu" class="dropdown-menu">
+          <button class="dropdown-item delete" @click="deletePost">Delete</button>
+        </div>
       </div>
     </div>
 
@@ -123,6 +126,7 @@ const props = defineProps({
     required: true,
   },
 })
+const emit = defineEmits(['deleted'])
 
 const showMenu = ref(false)
 const showComments = ref(false)
@@ -162,6 +166,23 @@ const addComment = () => {
 
 const sharePost = () => {
   console.log('Sharing post:', props.post.id)
+}
+
+const deletePost = async () => {
+  if (confirm('Are you sure you want to delete this post?')) {
+    try {
+      const token = localStorage.getItem('token')
+      const res = await fetch(`http://localhost:5000/api/posts/${props.post.id}`, {
+        method: 'DELETE',
+        headers: { 'Authorization': `Bearer ${token}` }
+      })
+      if (!res.ok) throw new Error('Failed to delete post')
+      emit('deleted', props.post.id)
+    } catch (err) {
+      alert(err.message || 'Failed to delete post')
+    }
+  }
+  showMenu.value = false
 }
 </script>
 
@@ -405,5 +426,34 @@ const sharePost = () => {
   font-size: 0.9rem;
   line-height: 1.5;
   margin: 0;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 30px;
+  background: #22223b;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 10;
+  min-width: 120px;
+  padding: 0.5rem 0;
+}
+.dropdown-item {
+  width: 100%;
+  background: none;
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  text-align: left;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+.dropdown-item.delete {
+  color: #ff6b6b;
+}
+.dropdown-item:hover {
+  background: #2a2a40;
 }
 </style>

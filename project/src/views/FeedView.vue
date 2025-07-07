@@ -1,5 +1,5 @@
 <!-- views/FeedView.vue -->
-<template>
+<!-- <template>
   <div class="feed-container">
     <div class="post-input">
       <div class="post-input-header">
@@ -12,7 +12,7 @@
       <FeedItem v-for="post in posts" :key="post.id" :post="post" />
     </div>
   </div>
-</template>
+</template> -->
 
 <script>
 import FeedItem from '@/components/FeedItem.vue'

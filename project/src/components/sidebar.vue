@@ -4,9 +4,10 @@
     <div class="sidebar fixed">
       <ul>
         <li>
-          <a href="#" class="sidebar-item" data-tooltip="Beranda" @click="goToPage('')">
-            <i class="icon home-icon"></i>
-          </a>
+          <a href="#" class="sidebar-item" data-tooltip="Beranda" @click="goToPage('/home')">
+          <i class="icon home-icon"></i>
+</a>
+
         </li>
         <li>
           <a href="#" class="sidebar-item" data-tooltip="Pencarian" @click="openSearchModal">
@@ -353,7 +354,7 @@ export default {
         {
           id: 1,
           type: 'like',
-          username: 'johndoe',
+          username: 'Sopo',
           avatar: '/api/placeholder/40/40',
           message: 'menyukai postingan Anda',
           postContent: 'Tips mahasiswa baru yang harus diperhatikan...',
@@ -441,9 +442,9 @@ export default {
       })
     },
 
-    goToPage(param) {
-      this.$router.push(`/${param}`)
-    },
+    goToPage(path) {
+    this.$router.push(path);
+  },
 
     closeSearchModal() {
       this.showSearchModal = false

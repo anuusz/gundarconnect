@@ -5,10 +5,10 @@
   >
     <div class="feed-header">
       <div class="user-info">
-        <img :src="post.avatar" alt="User Avatar" class="avatar" />
+        <img :src="post.author?.avatar || '/src/assets/profile.png'" alt="User Avatar" class="avatar" />
         <div>
-          <div class="username">{{ post.username }}</div>
-          <div class="timestamp">{{ post.timestamp }}</div>
+          <div class="username">{{ post.author?.fullName || post.author?.username || '-' }}</div>
+          <div class="timestamp">{{ formatTimestamp(post.createdAt) }}</div>
         </div>
       </div>
       <div class="more-options">
@@ -303,39 +303,18 @@ export default {
     return {
       isLiked: false,
       isSaved: false,
-      likeCount: this.post.likes || 0,
-      commentCount: this.post.commentCount || 0,
+      likeCount: this.post.likes ? this.post.likes.length : 0,
+      commentCount: this.post.comments ? this.post.comments.length : 0,
       showComments: false,
       showCommentModal: false,
-      showShareModal: false, // State untuk modal share
+      showShareModal: false,
       newComment: '',
-      shareLink: '', // Link yang akan dibagikan
-      isCopied: false, // State untuk menunjukkan apakah link sudah disalin
-      // Data untuk komentar
+      shareLink: '',
+      isCopied: false,
       commentLikes: {},
       commentReplies: {},
       likedComments: {},
     }
-  },
-  created() {
-    // Tambahkan event listener untuk tombol Escape
-    window.addEventListener('keydown', this.handleKeydown)
-
-    // Generate share link berdasarkan ID post
-    this.generateShareLink()
-
-    // Inisialisasi data komentar
-    if (this.post.comments) {
-      this.post.comments.forEach((comment, index) => {
-        this.commentLikes[index] = comment.likes || 0
-        this.commentReplies[index] = comment.replies ? comment.replies.length : 0
-        this.likedComments[index] = false
-      })
-    }
-  },
-  beforeUnmount() {
-    // Hapus event listener saat komponen dihapus
-    window.removeEventListener('keydown', this.handleKeydown)
   },
   methods: {
     toggleLike() {
@@ -435,6 +414,34 @@ export default {
       const url = encodeURIComponent(this.shareLink)
       window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank')
     },
+    formatTimestamp(ts) {
+      if (!ts) return ''
+      const d = new Date(ts)
+      return d.toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' })
+    },
+  },
+  created() {
+    // Tambahkan event listener untuk tombol Escape
+    window.addEventListener('keydown', this.handleKeydown)
+
+    // Generate share link berdasarkan ID post
+    this.generateShareLink()
+
+    // Inisialisasi data komentar
+    if (this.post.comments) {
+      this.post.comments.forEach((comment, index) => {
+        this.commentLikes[index] = comment.likes || 0
+        this.commentReplies[index] = comment.replies ? comment.replies.length : 0
+        this.likedComments[index] = false
+      })
+    }
+
+    this.likeCount = this.post.likes ? this.post.likes.length : 0
+    this.commentCount = this.post.comments ? this.post.comments.length : 0
+  },
+  beforeUnmount() {
+    // Hapus event listener saat komponen dihapus
+    window.removeEventListener('keydown', this.handleKeydown)
   },
 }
 </script>

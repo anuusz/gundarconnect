@@ -31,12 +31,9 @@
             </div>
 
             <div class="profile-details">
-              <h1 class="profile-name">John Doe</h1>
-              <p class="profile-username">@johndoe</p>
-              <p class="profile-bio">
-                Frontend Developer • Vue.js Enthusiast • Coffee Lover ☕ Building beautiful web
-                experiences one component at a time.
-              </p>
+              <h1 class="profile-name">{{ user?.fullName || '-' }}</h1>
+              <p class="profile-username">@{{ user?.username || '-' }}</p>
+              <p class="profile-bio">{{ user?.bio || '-' }}</p>
 
               <div class="profile-meta">
                 <span class="meta-item">
@@ -68,15 +65,15 @@
         <!-- Stats Section -->
         <div class="profile-stats">
           <div class="stat-item">
-            <span class="stat-number">1,234</span>
+            <span class="stat-number">{{ posts.length }}</span>
             <span class="stat-label">Posts</span>
           </div>
           <div class="stat-item">
-            <span class="stat-number">5.6K</span>
+            <span class="stat-number">0</span>
             <span class="stat-label">Followers</span>
           </div>
           <div class="stat-item">
-            <span class="stat-number">892</span>
+            <span class="stat-number">0</span>
             <span class="stat-label">Following</span>
           </div>
         </div>
@@ -97,7 +94,7 @@
         <!-- Content Section -->
         <div class="profile-content">
           <div v-if="activeTab === 'posts'" class="content-grid">
-            <PostCard v-for="post in posts" :key="post.id" :post="post" />
+            <PostCard v-for="post in posts" :key="post.id" :post="post" @deleted="onPostDeleted" />
           </div>
 
           <div v-else-if="activeTab === 'about'" class="about-section">
@@ -253,7 +250,7 @@
                 </svg>
               </div>
               <div class="preview-info">
-                <h3>John Doe</h3>
+                <h3 class="profile-name">{{ user?.fullName || '-' }}</h3>
                 <p>Frontend Developer • Vue.js Enthusiast</p>
               </div>
             </div>
@@ -273,52 +270,21 @@ import AboutInfo from './profile/AboutInfo.vue'
 
 // Icons
 const PostsIcon = {
-  template: `<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>`,
+  template: `<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>`,
 }
 
 const AboutIcon = {
   template: `<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>`,
 }
 
-const activeTab = ref('posts')
-const showEditModal = ref(false)
-const showShareModal = ref(false)
-
-const editForm = ref({
-  name: 'John Doe',
-  username: '@johndoe',
-  bio: 'Frontend Developer • Vue.js Enthusiast • Coffee Lover ☕ Building beautiful web experiences one component at a time.',
-  location: 'Jakarta, Indonesia',
-})
-
 const tabs = [
   { id: 'posts', label: 'Posts', icon: PostsIcon },
   { id: 'about', label: 'About', icon: AboutIcon },
 ]
 
-const posts = ref([
-  {
-    id: 1,
-    content: 'Just finished building a new Vue 3 component library! 🚀',
-    timestamp: '2 hours ago',
-    likes: 42,
-    comments: 8,
-  },
-  {
-    id: 2,
-    content: "Working on some exciting new features for our app. Can't wait to share!",
-    timestamp: '1 day ago',
-    likes: 28,
-    comments: 5,
-  },
-  {
-    id: 3,
-    content: 'Learning about new CSS features. The web platform keeps evolving! 💻',
-    timestamp: '3 days ago',
-    likes: 35,
-    comments: 12,
-  },
-])
+// const posts = ref([
+
+// ])
 
 const saveProfile = () => {
   // Simulate saving profile
@@ -365,6 +331,41 @@ const copyProfileLink = async () => {
 onMounted(() => {
   console.log('Profile page mounted')
 })
+
+// new code for original profile
+const user = ref(null)
+const posts = ref([])
+const activeTab = ref('posts')
+const showEditModal = ref(false)
+const showShareModal = ref(false)
+
+const fetchProfile = async () => {
+  try {
+    const token = localStorage.getItem('token')
+    if (!token) throw new Error('Token tidak ditemukan')
+    // Ambil userId dari JWT (payload)
+    const payload = JSON.parse(atob(token.split('.')[1]))
+    const userId = payload.id
+    const res = await fetch(`http://localhost:5000/api/profile/${userId}`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
+    if (!res.ok) throw new Error('Gagal memuat profil')
+    const data = await res.json()
+    user.value = data.user
+    posts.value = data.posts
+    console.log('Profile data:', data)
+  } catch (err) {
+    user.value = null
+    posts.value = []
+    console.error('Profile fetch error:', err)
+  }
+}
+
+const onPostDeleted = (postId) => {
+  posts.value = posts.value.filter(p => p.id !== postId)
+}
+
+onMounted(fetchProfile)
 </script>
 
 <style scoped>
