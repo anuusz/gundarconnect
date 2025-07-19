@@ -4,10 +4,15 @@ const bodyParser = require('body-parser');
 const sequelize = require('./config/database');
 const { Post, Comment } = require('./models/Post');
 const User = require('./models/User');
+<<<<<<< HEAD
+=======
+
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/users');
 const postRoutes = require('./routes/posts');
 const profileRoutes = require('./routes/profile');
+<<<<<<< HEAD
 const savedRoutes = require('./routes/saved');
 const path = require('path');
 const aboutRoutes = require('./routes/about');
@@ -30,22 +35,34 @@ app.use(cors({
 }));
 app.use(bodyParser.json());
 app.use('/uploads', express.static(__dirname + '/public/uploads'));
+=======
+
+const app = express();
+
+// Middleware
+app.use(cors());
+app.use(bodyParser.json());
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/profile', profileRoutes);
+<<<<<<< HEAD
 app.use('/api/saved', savedRoutes);
 app.use('/api/about', aboutRoutes);
 const notificationsRoutes = require('./routes/notifications');
 app.use('/api/notifications', notificationsRoutes);
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 
 // Sync database
 sequelize.sync().then(() => {
   console.log('Database synced');
 });
 
+<<<<<<< HEAD
 
 // Socket.io setup
 const http = require('http');
@@ -91,3 +108,10 @@ server.listen(PORT, () => {
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+=======
+// Start server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server berjalan di http://localhost:${PORT}`);
+});
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737

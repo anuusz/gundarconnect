@@ -4,13 +4,20 @@
       <img src="@/assets/connect.png" alt="Logo" class="logo" />
     </div>
     <div class="top-bar-right">
+<<<<<<< HEAD
       <a href="#" class="profile-link" @click.prevent="handleProfileClick">
         <img :src="userAvatar" alt="User" class="avatar" />
       </a>
+=======
+      <router-link to="/profile" class="profile-link">
+        <img src="@/assets/profile.png" alt="User" class="avatar" />
+      </router-link>
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
     </div>
   </div>
 </template>
 
+<<<<<<< HEAD
 <script setup>
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
@@ -45,6 +52,11 @@ const handleProfileClick = () => {
 
   // Redirect to user profile using their username
   router.push(`/@${user.username}`)
+=======
+<script>
+export default {
+  name: 'TopBar',
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 }
 </script>
 

@@ -1,6 +1,7 @@
 <template>
   <div class="saved-container">
     <div class="saved-header">
+<<<<<<< HEAD
       <!-- <h1>Postingan Tersimpan</h1> -->
       <div class="filter-options">
         <!-- <select v-model="sortOption" class="sort-select">
@@ -19,6 +20,26 @@
       </div>
     </div>
     <TopBar />
+=======
+      <h1>Postingan Tersimpan</h1>
+      <div class="filter-options">
+        <select v-model="sortOption" class="sort-select">
+          <option value="newest">Terbaru</option>
+          <option value="oldest">Terlama</option>
+          <option value="popular">Paling Populer</option>
+        </select>
+        <div class="view-toggle">
+          <button :class="{ active: viewMode === 'list' }" @click="viewMode = 'list'">
+            <i class="fa fa-list"></i>
+          </button>
+          <button :class="{ active: viewMode === 'grid' }" @click="viewMode = 'grid'">
+            <i class="fa fa-th"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
     <SavedList />
     <Sidebar />
 
@@ -26,6 +47,7 @@
 </template>
 
 <script setup>
+<<<<<<< HEAD
 import { computed, ref, onMounted } from 'vue'
 import { useSavedStore } from '@/stores/saved'
 import SavedList from '@/components/SavedList.vue'
@@ -35,11 +57,23 @@ import TopBar from '@/components/TopBar.vue'
 
 
 const savedStore = useSavedStore()
+=======
+import { computed, ref } from 'vue'
+import { useStore } from 'vuex'
+import SavedList from '@/components/SavedList.vue'
+import SavedItem from '@/components/SavedItem.vue'
+import Sidebar from '@/components/sidebar.vue'
+
+
+const store = useStore()
+
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 const viewMode = ref('list') // 'list' atau 'grid'
 const sortOption = ref('newest')
 const selectedFolder = ref(null)
 const showAddFolderModal = ref(false)
 const hasFolders = ref(false)
+<<<<<<< HEAD
 const folders = ref([])
 
 const savedPosts = computed(() => savedStore.savedPosts)
@@ -49,6 +83,24 @@ const filteredSavedPosts = computed(() => {
   if (selectedFolder.value) {
     result = result.filter((post) => post.folderId === selectedFolder.value)
   }
+=======
+
+const folders = ref([
+  // Contoh data folder
+  // { id: 1, name: 'Tutorial', postCount: 5 },
+  // { id: 2, name: 'Inspirasi', postCount: 3 }
+])
+
+const savedPosts = computed(() => store.state.saved.savedPosts)
+
+const filteredSavedPosts = computed(() => {
+  let result = [...savedPosts.value]
+
+  if (selectedFolder.value) {
+    result = result.filter((post) => post.folderId === selectedFolder.value)
+  }
+
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
   switch (sortOption.value) {
     case 'newest':
       return result.sort((a, b) => new Date(b.savedAt) - new Date(a.savedAt))
@@ -62,7 +114,11 @@ const filteredSavedPosts = computed(() => {
 })
 
 function removeFromSaved(postId) {
+<<<<<<< HEAD
   savedStore.unsavePost(postId)
+=======
+  store.dispatch('saved/removeSavedPost', postId)
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 }
 
 function selectFolder(folderId) {
@@ -70,6 +126,7 @@ function selectFolder(folderId) {
 }
 
 function createNewFolder(folderName) {
+<<<<<<< HEAD
   // Implement folder creation if needed
   showAddFolderModal.value = false
 }
@@ -77,6 +134,11 @@ function createNewFolder(folderName) {
 onMounted(() => {
   savedStore.fetchSavedPosts()
 })
+=======
+  store.dispatch('saved/addFolder', folderName)
+  showAddFolderModal.value = false
+}
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 </script>
 
 <style scoped>

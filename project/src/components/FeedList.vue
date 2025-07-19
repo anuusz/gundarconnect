@@ -8,6 +8,7 @@
         readonly
       />
     </div>
+<<<<<<< HEAD
 
     <!-- Feed Items -->
     <div v-for="post in posts" :key="post.id" class="feed-item-wrapper">
@@ -85,6 +86,11 @@
     </div>
 
     <!-- New Post Modal -->
+=======
+    <FeedItem v-for="post in posts" :key="post.id" :post="post" />
+
+    <!-- Modal Popup -->
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
     <div v-if="showModal" class="modal-overlay" @click="closeModal">
       <div class="modal-content" @click.stop>
         <div class="modal-header">
@@ -99,7 +105,11 @@
               <img src="../assets/profile.png" alt="User Avatar" />
             </div>
             <div class="user-details">
+<<<<<<< HEAD
               <span class="username">{{ currentUserName }}</span>
+=======
+              <span class="username">AdminProd</span>
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
             </div>
           </div>
 
@@ -122,6 +132,16 @@
                     <polyline points="21,15 16,10 5,21"/>
                   </svg>
                 </button>
+<<<<<<< HEAD
+=======
+                <!-- <button class="action-btn" title="Add GIF">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="6" width="20" height="12" rx="2"/>
+                    <circle cx="8" cy="12" r="2"/>
+                    <circle cx="16" cy="12" r="2"/>
+                  </svg>
+                </button> -->
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
                 <button class="action-btn" title="Add Poll">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="12" y1="20" x2="12" y2="10"/>
@@ -129,6 +149,15 @@
                     <line x1="6" y1="20" x2="6" y2="16"/>
                   </svg>
                 </button>
+<<<<<<< HEAD
+=======
+                <!-- <button class="action-btn" title="Add Location">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                </button> -->
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
               </div>
             </div>
           </div>
@@ -162,6 +191,7 @@ export default {
     const newPost = ref('')
     const postTextarea = ref(null)
 
+<<<<<<< HEAD
     // Menu states
     const showMenu = ref(false)
     const currentPostId = ref(null)
@@ -220,6 +250,12 @@ export default {
     // Existing functions
     const fetchPosts = async () => {
       try {
+=======
+    // Ambil feed dari backend
+    const fetchPosts = async () => {
+      try {
+        // Hapus pengecekan token, biarkan request tanpa Authorization jika token tidak ada
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
         const token = localStorage.getItem('token')
         const headers = token ? { 'Authorization': `Bearer ${token}` } : {}
         const res = await fetch('http://localhost:5000/api/posts', {
@@ -227,7 +263,11 @@ export default {
         })
         if (!res.ok) throw new Error('Gagal memuat feed')
         const data = await res.json()
+<<<<<<< HEAD
         console.log('FEED DATA:', data)
+=======
+        console.log('FEED DATA:', data) // Tambahkan log ini untuk debug
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
         posts.value = Array.isArray(data) ? data : []
       } catch (err) {
         posts.value = []
@@ -251,6 +291,10 @@ export default {
       newPost.value = ''
     }
 
+<<<<<<< HEAD
+=======
+    // Submit post ke backend
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
     const submitPost = async () => {
       if (newPost.value.trim()) {
         try {
@@ -267,7 +311,11 @@ export default {
             })
           })
           if (!res.ok) throw new Error('Gagal membuat postingan')
+<<<<<<< HEAD
           await fetchPosts()
+=======
+          await fetchPosts() // Ambil ulang feed setelah post sukses
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
           closeModal()
         } catch (err) {
           alert(err.message || 'Gagal membuat postingan')
@@ -282,6 +330,7 @@ export default {
       }
     }
 
+<<<<<<< HEAD
     // Menu functions
     const showPostMenu = ({ postId, event }) => {
       currentPostId.value = postId
@@ -370,11 +419,14 @@ export default {
       currentUserName = user?.fullName || user?.username || 'User';
     } catch (e) {}
 
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
     return {
       posts,
       showModal,
       newPost,
       postTextarea,
+<<<<<<< HEAD
       showMenu,
       menuPosition,
       showReportModal,
@@ -395,6 +447,12 @@ export default {
       selectReason,
       submitReport,
       currentUserName
+=======
+      openNewThreadModal,
+      closeModal,
+      submitPost,
+      adjustTextareaHeight
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
     }
   },
 }
@@ -432,6 +490,7 @@ export default {
   color: #8f8f9d;
 }
 
+<<<<<<< HEAD
 .feed-item-wrapper {
   position: relative;
 }
@@ -625,6 +684,9 @@ export default {
 }
 
 /* Existing Modal Styles */
+=======
+/* Modal Styles */
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -817,9 +879,12 @@ export default {
   .feed-list {
     width: 90%;
   }
+<<<<<<< HEAD
 
   .dropdown-menu {
     min-width: 180px;
   }
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 }
 </style>

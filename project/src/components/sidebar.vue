@@ -327,9 +327,12 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import { onMounted } from 'vue'
 import io from 'socket.io-client'
 
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 export default {
   name: 'App',
   data() {
@@ -426,6 +429,7 @@ export default {
       return this.notifications.filter((notif) => notif.type === this.activeNotificationFilter)
     },
   },
+<<<<<<< HEAD
   mounted() {
     const token = localStorage.getItem('token')
     fetch('http://localhost:5000/api/notifications', {
@@ -471,6 +475,17 @@ export default {
   },
   beforeUnmount() {
     if (this.socket) this.socket.disconnect()
+=======
+  created() {
+    // Update filter counts
+    this.updateFilterCounts()
+
+    // Event listener untuk keyboard shortcuts
+    window.addEventListener('keydown', this.handleKeyboardShortcuts)
+  },
+  beforeUnmount() {
+    window.removeEventListener('keydown', this.handleKeyboardShortcuts)
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
   },
   methods: {
     // Search methods
@@ -572,6 +587,7 @@ export default {
         }
       }
     },
+<<<<<<< HEAD
 
     // Tambahkan fungsi untuk push notifikasi dari event like, comment, follow
     pushNotification({ type, username, avatar, message, postContent }) {
@@ -586,6 +602,8 @@ export default {
         isRead: false,
       })
     },
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
   },
 }
 </script>

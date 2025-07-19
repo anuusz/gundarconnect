@@ -13,6 +13,7 @@
           <div class="profile-info-section">
             <div class="profile-avatar-container">
               <div class="profile-avatar">
+<<<<<<< HEAD
                 <template v-if="user && user.avatar">
                   <img :src="getAvatarUrl(user.avatar)" alt="Avatar" style="width:150px;height:150px;border-radius:50%" />
                 </template>
@@ -26,16 +27,31 @@
                   </div>
                 </template>
                 <!-- <button class="edit-avatar-btn">
+=======
+                <div class="avatar-placeholder">
+                  <svg width="60" height="60" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                    />
+                  </svg>
+                </div>
+                <button class="edit-avatar-btn">
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
                   <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
                     <path
                       d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
                     />
                   </svg>
+<<<<<<< HEAD
                 </button> -->
+=======
+                </button>
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
               </div>
             </div>
 
             <div class="profile-details">
+<<<<<<< HEAD
               <template v-if="user">
                 <h1 class="profile-name">{{ user.fullName || '-' }}</h1>
                 <p class="profile-username">@{{ user.username || '-' }}</p>
@@ -51,6 +67,13 @@
               </template>
 
               <!-- <div class="profile-meta">
+=======
+              <h1 class="profile-name">{{ user?.fullName || '-' }}</h1>
+              <p class="profile-username">@{{ user?.username || '-' }}</p>
+              <p class="profile-bio">{{ user?.bio || '-' }}</p>
+
+              <div class="profile-meta">
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
                 <span class="meta-item">
                   <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
                     <path
@@ -67,6 +90,7 @@
                   </svg>
                   Bergabung Januari 2024
                 </span>
+<<<<<<< HEAD
               </div> -->
             </div>
 
@@ -86,6 +110,13 @@
                   {{ isFollowing ? 'Following' : 'Follow' }}
                 </button>
               </template>
+=======
+              </div>
+            </div>
+
+            <div class="profile-actions">
+              <button class="btn-primary" @click="showEditModal = true">Edit Profile</button>
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
               <button class="btn-secondary" @click="showShareModal = true">Share</button>
             </div>
           </div>
@@ -97,16 +128,26 @@
             <span class="stat-number">{{ posts.length }}</span>
             <span class="stat-label">Posts</span>
           </div>
+<<<<<<< HEAD
           <div class="stat-item clickable" @click="showFollowers = true">
             <span class="stat-number">{{ (followers || []).length }}</span>
             <span class="stat-label">Followers</span>
           </div>
           <div class="stat-item clickable" @click="showFollowing = true">
             <span class="stat-number">{{ (following || []).length }}</span>
+=======
+          <div class="stat-item">
+            <span class="stat-number">0</span>
+            <span class="stat-label">Followers</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">0</span>
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
             <span class="stat-label">Following</span>
           </div>
         </div>
 
+<<<<<<< HEAD
         <!-- Followers Modal -->
         <div v-if="showFollowers" class="modal-overlay" @click="showFollowers = false">
           <div class="modal-container" @click.stop>
@@ -235,6 +276,8 @@ watch(user, () => {
   checkIsFollowing()
 }) -->
 
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
         <!-- Navigation Tabs -->
         <div class="profile-tabs">
           <button
@@ -251,6 +294,7 @@ watch(user, () => {
         <!-- Content Section -->
         <div class="profile-content">
           <div v-if="activeTab === 'posts'" class="content-grid">
+<<<<<<< HEAD
             <PostCard
               v-for="post in posts"
               :key="post.id"
@@ -258,6 +302,9 @@ watch(user, () => {
               @deleted="onPostDeleted"
               @refresh="fetchProfile"
             />
+=======
+            <PostCard v-for="post in posts" :key="post.id" :post="post" @deleted="onPostDeleted" />
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
           </div>
 
           <div v-else-if="activeTab === 'about'" class="about-section">
@@ -274,11 +321,18 @@ watch(user, () => {
           <h2 class="modal-title">Edit Profile</h2>
           <button class="modal-close" @click="showEditModal = false">
             <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+<<<<<<< HEAD
               <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+=======
+              <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+              />
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
             </svg>
           </button>
         </div>
 
+<<<<<<< HEAD
         <form @submit.prevent="handleUpdateProfile">
           <div class="modal-body">
             <div class="form-group">
@@ -325,6 +379,68 @@ watch(user, () => {
             <button type="submit" class="btn-save">Save Changes</button>
           </div>
         </form>
+=======
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label">Profile Picture</label>
+            <div class="avatar-upload">
+              <div class="avatar-preview">
+                <svg width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                  />
+                </svg>
+              </div>
+              <button class="upload-btn">Change Photo</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input
+              type="text"
+              class="form-input"
+              v-model="editForm.name"
+              placeholder="Enter your full name"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Username</label>
+            <input
+              type="text"
+              class="form-input"
+              v-model="editForm.username"
+              placeholder="@username"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Bio</label>
+            <textarea
+              class="form-textarea"
+              v-model="editForm.bio"
+              placeholder="Tell us about yourself..."
+              rows="4"
+            ></textarea>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Location</label>
+            <input
+              type="text"
+              class="form-input"
+              v-model="editForm.location"
+              placeholder="Your location"
+            />
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn-cancel" @click="showEditModal = false">Cancel</button>
+          <button class="btn-save" @click="saveProfile">Save Changes</button>
+        </div>
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
       </div>
     </div>
 
@@ -405,6 +521,7 @@ watch(user, () => {
         </div>
       </div>
     </div>
+<<<<<<< HEAD
 
     <!-- Logout Confirmation Modal -->
     <div v-if="showLogoutConfirm" class="modal-overlay" @click="showLogoutConfirm = false">
@@ -483,19 +600,96 @@ const mainContentClass = computed(() => {
 })
 import { ref, onMounted, watch, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+=======
+  </div>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 import TopBar from './TopBar.vue'
 import sidebar from './sidebar.vue'
 import PostCard from './profile/PostCard.vue'
 import AboutInfo from './profile/AboutInfo.vue'
+<<<<<<< HEAD
 import { getAvatarUrl } from '@/utils/avatar'
 
 const route = useRoute()
 const router = useRouter()
+=======
+
+// Icons
+const PostsIcon = {
+  template: `<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>`,
+}
+
+const AboutIcon = {
+  template: `<svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>`,
+}
+
+const tabs = [
+  { id: 'posts', label: 'Posts', icon: PostsIcon },
+  { id: 'about', label: 'About', icon: AboutIcon },
+]
+
+// const posts = ref([
+
+// ])
+
+const saveProfile = () => {
+  // Simulate saving profile
+  console.log('Saving profile:', editForm.value)
+  showEditModal.value = false
+  // Add success notification here if needed
+}
+
+const shareToSocial = (platform) => {
+  const profileUrl = window.location.href
+  const text = `Check out ${editForm.value.name}'s profile on GundarConnect!`
+
+  let shareUrl = ''
+
+  switch (platform) {
+    case 'twitter':
+      shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(profileUrl)}`
+      break
+    case 'linkedin':
+      shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(profileUrl)}`
+      break
+    case 'facebook':
+      shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(profileUrl)}`
+      break
+  }
+
+  if (shareUrl) {
+    window.open(shareUrl, '_blank', 'width=600,height=400')
+  }
+  showShareModal.value = false
+}
+
+const copyProfileLink = async () => {
+  try {
+    await navigator.clipboard.writeText(window.location.href)
+    console.log('Profile link copied to clipboard!')
+    // Add success notification here if needed
+  } catch (err) {
+    console.error('Failed to copy link:', err)
+  }
+  showShareModal.value = false
+}
+
+onMounted(() => {
+  console.log('Profile page mounted')
+})
+
+// new code for original profile
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 const user = ref(null)
 const posts = ref([])
 const activeTab = ref('posts')
 const showEditModal = ref(false)
 const showShareModal = ref(false)
+<<<<<<< HEAD
 const showLogoutConfirm = ref(false)
 const avatarPreview = ref(null)
 const editForm = ref({
@@ -636,6 +830,36 @@ watch(
     fetchProfile()
   }
 )
+=======
+
+const fetchProfile = async () => {
+  try {
+    const token = localStorage.getItem('token')
+    if (!token) throw new Error('Token tidak ditemukan')
+    // Ambil userId dari JWT (payload)
+    const payload = JSON.parse(atob(token.split('.')[1]))
+    const userId = payload.id
+    const res = await fetch(`http://localhost:5000/api/profile/${userId}`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
+    if (!res.ok) throw new Error('Gagal memuat profil')
+    const data = await res.json()
+    user.value = data.user
+    posts.value = data.posts
+    console.log('Profile data:', data)
+  } catch (err) {
+    user.value = null
+    posts.value = []
+    console.error('Profile fetch error:', err)
+  }
+}
+
+const onPostDeleted = (postId) => {
+  posts.value = posts.value.filter(p => p.id !== postId)
+}
+
+onMounted(fetchProfile)
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 </script>
 
 <style scoped>
@@ -706,8 +930,13 @@ watch(
 
 .profile-avatar {
   position: relative;
+<<<<<<< HEAD
   width: 150px;
   height: 155px;
+=======
+  width: 120px;
+  height: 120px;
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 }
 
 .avatar-placeholder {
@@ -794,7 +1023,10 @@ watch(
   gap: 1rem;
   align-items: center;
   padding-top: 1rem;
+<<<<<<< HEAD
   flex-wrap: wrap;
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 }
 
 .btn-primary {
@@ -830,6 +1062,7 @@ watch(
   transform: translateY(-2px);
 }
 
+<<<<<<< HEAD
 /* Logout Button Styles */
 .btn-logout {
   display: flex;
@@ -857,6 +1090,8 @@ watch(
   height: 18px;
 }
 
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 .profile-stats {
   max-width: 1200px;
   margin: 0 auto;
@@ -1261,6 +1496,7 @@ watch(
   font-size: 0.85rem;
 }
 
+<<<<<<< HEAD
 /* Logout Modal Specific Styles */
 .logout-modal {
   max-width: 420px;
@@ -1314,6 +1550,8 @@ watch(
   box-shadow: 0 8px 25px rgba(220, 53, 69, 0.3);
 }
 
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -1343,6 +1581,7 @@ watch(
   .share-options {
     grid-template-columns: 1fr;
   }
+<<<<<<< HEAD
 
   .profile-actions {
     flex-direction: column;
@@ -1352,5 +1591,7 @@ watch(
   .btn-logout {
     justify-content: center;
   }
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 }
 </style>

@@ -20,6 +20,7 @@
     "node-fetch": "^3.3.2",
     "pg": "^8.16.3",
     "pg-hstore": "^2.3.4",
+<<<<<<< HEAD
     "sequelize": "^6.37.7",
     "socket.io-client": "^4.8.1"
   },
@@ -27,4 +28,9 @@
   "devDependencies": {
     "nodemon": "^3.1.10"
   }
+=======
+    "sequelize": "^6.37.7"
+  },
+  "description": ""
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 }

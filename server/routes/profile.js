@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 const express = require('express');
 const router = express.Router();
 const { protect } = require('../middleware/auth');
 const User = require('../models/User');
 const { Post, Comment } = require('../models/Post');
+<<<<<<< HEAD
 const upload = require('../middleware/upload');
 
 // Get user profile by username
@@ -37,6 +41,8 @@ router.get('/username/:username', async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 
 // Get user profile
 router.get('/:userId', protect, async (req, res) => {
@@ -70,6 +76,7 @@ router.get('/:userId', protect, async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
 // Update user profile (support upload avatar)
 router.put('/update', protect, upload.single('avatar'), async (req, res) => {
   try {
@@ -84,6 +91,17 @@ router.put('/update', protect, upload.single('avatar'), async (req, res) => {
     }
     await user.save();
     console.log('User after save:', user.dataValues);
+=======
+// Update user profile
+router.put('/update', protect, async (req, res) => {
+  try {
+    const { fullName, bio, avatar } = req.body;
+    const user = await User.findByPk(req.user.id);
+    if (fullName) user.fullName = fullName;
+    if (bio) user.bio = bio;
+    if (avatar) user.avatar = avatar;
+    await user.save();
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
     res.json({
       user: {
         id: user.id,

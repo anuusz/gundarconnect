@@ -1,13 +1,18 @@
 <template>
   <div id="app">
+<<<<<<< HEAD
     <Sidebar />
     <div :class="mainContentClass">
       <RouterView />
     </div>
+=======
+    <RouterView />
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
   </div>
 </template>
 
 <script setup>
+<<<<<<< HEAD
 import { RouterView, useRoute } from 'vue-router'
 import Sidebar from './components/sidebar.vue'
 const route = useRoute()
@@ -30,6 +35,17 @@ const route = useRoute()
 }
 
 
+=======
+import { RouterView } from 'vue-router'
+</script>
+
+<style scoped>
+
+</style>
+
+
+<style scoped>
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 p {
   color: white;
 }

@@ -16,10 +16,14 @@
     "url": "https://github.com/davidradot/gundarconnect/issues"
   },
   "homepage": "https://github.com/davidradot/gundarconnect#readme",
+<<<<<<< HEAD
   "description": "",
   "dependencies": {
     "multer": "^2.0.1",
     "socket.io": "^4.8.1",
     "socket.io-client": "^4.8.1"
   }
+=======
+  "description": ""
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 }

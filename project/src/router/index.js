@@ -22,12 +22,21 @@ const routes = [
     component: HomeView,
     meta: { title: 'Home - GundarConnect' }
   },
+<<<<<<< HEAD
   // {
   //   path: '/feed',
   //   name: 'Feed',
   //   component: FeedView,
   //   meta: { title: 'Feed - GundarConnect' }
   // },
+=======
+  {
+    path: '/feed',
+    name: 'Feed',
+    component: FeedView,
+    meta: { title: 'Feed - GundarConnect' }
+  },
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
   {
     path: '/saved',
     name: 'Saved',
@@ -45,6 +54,7 @@ const routes = [
     name: 'Profile',
     component: () => import('@/components/ProfilePage.vue'),
     meta: { title: 'Profile - GundarConnect' }
+<<<<<<< HEAD
   },
   {
     path: '/@:username',
@@ -55,11 +65,17 @@ const routes = [
 ]
 
 
+=======
+  }
+]
+
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes
 })
 
+<<<<<<< HEAD
 // Navigation guard: redirect /profile ke /:username jika login
 router.beforeEach((to, from, next) => {
   if (to.path === '/profile') {
@@ -76,6 +92,8 @@ router.beforeEach((to, from, next) => {
   next();
 });
 
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 // Set document title from route meta
 router.beforeEach((to, from, next) => {
   if (to.meta.title) {

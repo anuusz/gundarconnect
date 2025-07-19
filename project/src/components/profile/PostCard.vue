@@ -2,6 +2,7 @@
   <div class="post-card">
     <div class="post-header">
       <div class="post-avatar">
+<<<<<<< HEAD
         <template v-if="post.author && post.author.avatar">
           <img :src="getAvatarUrl(post.author.avatar)" alt="Avatar" style="width:32px;height:32px;border-radius:50%" />
         </template>
@@ -23,6 +24,18 @@
             </button>
           </template>
         </span>
+=======
+        <div class="avatar-placeholder">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+            />
+          </svg>
+        </div>
+      </div>
+      <div class="post-info">
+        <span class="post-author">{{ post.author?.fullName || post.author?.username || '-' }}</span>
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
         <span class="post-time">{{ post.timestamp }}</span>
       </div>
       <div class="post-menu">
@@ -61,7 +74,11 @@
             d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
           />
         </svg>
+<<<<<<< HEAD
         <span>{{ likeCount }}</span>
+=======
+        <span>{{ post.likes }}</span>
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
       </button>
 
       <button class="action-btn comment-btn" @click="showComments = !showComments">
@@ -70,7 +87,11 @@
             d="M21.99 4c0-1.1-.89-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.89 2 2 2h14l4 4-.01-18zM18 14H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"
           />
         </svg>
+<<<<<<< HEAD
         <span>{{ Array.isArray(post.comments) ? post.comments.length : 0 }}</span>
+=======
+        <span>{{ post.comments }}</span>
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
       </button>
 
       <button class="action-btn share-btn" @click="sharePost">
@@ -129,6 +150,7 @@
 </template>
 
 <script setup>
+<<<<<<< HEAD
 import { ref, computed, onMounted } from 'vue'
 import { getAvatarUrl } from '@/utils/avatar'
 
@@ -177,6 +199,9 @@ const toggleFollow = async () => {
 onMounted(() => {
   checkIsFollowing()
 })
+=======
+import { ref } from 'vue'
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 
 const props = defineProps({
   post: {
@@ -189,6 +214,7 @@ const emit = defineEmits(['deleted'])
 const showMenu = ref(false)
 const showComments = ref(false)
 const isLiked = ref(false)
+<<<<<<< HEAD
 const likeCount = ref(props.post.likes ? props.post.likes.length : 0)
 const newComment = ref('')
 
@@ -231,6 +257,29 @@ onMounted(() => {
   isLiked.value = !!localStorage.getItem(likeKey)
 })
 
+=======
+const newComment = ref('')
+
+const comments = ref([
+  {
+    id: 1,
+    author: 'Jane Smith',
+    text: 'Amazing work! Love the design.',
+    time: '1h ago',
+  },
+  {
+    id: 2,
+    author: 'Mike Johnson',
+    text: 'Can you share the source code?',
+    time: '30m ago',
+  },
+])
+
+const toggleLike = () => {
+  isLiked.value = !isLiked.value
+}
+
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 const addComment = () => {
   if (newComment.value.trim()) {
     comments.value.push({

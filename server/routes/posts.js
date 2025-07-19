@@ -3,8 +3,11 @@ const router = express.Router();
 const { protect } = require('../middleware/auth');
 const { Post, Comment } = require('../models/Post');
 const User = require('../models/User');
+<<<<<<< HEAD
 const Notification = require('../models/Notification');
 
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 
 // Get all posts (feed)
 router.get('/', async (req, res) => {
@@ -52,6 +55,7 @@ router.post('/:postId/like', protect, async (req, res) => {
     const liked = await post.hasLike(user);
     if (!liked) {
       await post.addLike(user);
+<<<<<<< HEAD
       // Trigger notification
       if (post.authorId !== user.id) {
         const notif = await Notification.create({
@@ -64,6 +68,8 @@ router.post('/:postId/like', protect, async (req, res) => {
         // Emit realtime notification
         req.app.get('io').to(`user_${post.authorId}`).emit('notification', notif);
       }
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
     } else {
       await post.removeLike(user);
     }
@@ -72,7 +78,10 @@ router.post('/:postId/like', protect, async (req, res) => {
     });
     res.json(updatedPost);
   } catch (error) {
+<<<<<<< HEAD
     console.error('LIKE ERROR:', error);
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
     res.status(500).json({ message: error.message });
   }
 });
@@ -91,6 +100,7 @@ router.post('/:postId/comments', protect, async (req, res) => {
       content,
       image
     });
+<<<<<<< HEAD
     // Trigger notification
     if (post.authorId !== req.user.id) {
       const notif = await Notification.create({
@@ -103,6 +113,8 @@ router.post('/:postId/comments', protect, async (req, res) => {
       });
       req.app.get('io').to(`user_${post.authorId}`).emit('notification', notif);
     }
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
     const updatedPost = await Post.findByPk(post.id, {
       include: [
         { model: User, as: 'author', attributes: ['id', 'username', 'fullName', 'avatar'] },

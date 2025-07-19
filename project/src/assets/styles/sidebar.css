@@ -11,7 +11,10 @@
   justify-content: center;
   align-items: center;
   border-right: 1px solid #150336;
+<<<<<<< HEAD
   z-index: 999;
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 }
 
 .fixed {

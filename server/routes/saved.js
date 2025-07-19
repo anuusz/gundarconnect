@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const express = require('express');
 const router = express.Router();
 const { protect } = require('../middleware/auth');
@@ -71,3 +72,32 @@ router.get('/my', protect, async (req, res) => {
 });
 
 module.exports = router;
+=======
+const { DataTypes, Model } = require('sequelize');
+const sequelize = require('../config/database');
+const User = require('./User');
+const { Post } = require('./Post');
+
+class SavedPost extends Model {}
+
+SavedPost.init({
+  userId: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  },
+  postId: {
+    type: DataTypes.INTEGER,
+    allowNull: false
+  }
+}, {
+  sequelize,
+  modelName: 'SavedPost',
+  indexes: [{ unique: true, fields: ['userId', 'postId'] }]
+});
+
+// Associations
+User.belongsToMany(Post, { through: SavedPost, as: 'savedPosts', foreignKey: 'userId' });
+Post.belongsToMany(User, { through: SavedPost, as: 'savedBy', foreignKey: 'postId' });
+
+module.exports = SavedPost;
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737

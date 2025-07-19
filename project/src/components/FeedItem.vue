@@ -5,6 +5,7 @@
   >
     <div class="feed-header">
       <div class="user-info">
+<<<<<<< HEAD
         <img :src="getAvatarUrl(post.author?.avatar)" alt="User Avatar" class="avatar" />
         <div>
           <router-link
@@ -14,11 +15,17 @@
           >
             {{ post.author?.fullName || post.author?.username || '-' }}
           </router-link>
+=======
+        <img :src="post.author?.avatar || '/src/assets/profile.png'" alt="User Avatar" class="avatar" />
+        <div>
+          <div class="username">{{ post.author?.fullName || post.author?.username || '-' }}</div>
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
           <div class="timestamp">{{ formatTimestamp(post.createdAt) }}</div>
         </div>
       </div>
       <div class="more-options">
         <span v-if="post.isReply">Balas</span>
+<<<<<<< HEAD
         <div v-else class="menu-container">
           <button class="menu-btn" @click="toggleMenu" ref="menuButton">
             •••
@@ -83,6 +90,9 @@
             ></textarea>
           </div>
         </div>
+=======
+        <span v-else>•••</span>
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
       </div>
     </div>
 
@@ -213,6 +223,7 @@
             <!-- Komentar item -->
             <div v-for="(comment, index) in post.comments" :key="index" class="comment-item">
               <div class="comment-avatar">
+<<<<<<< HEAD
                 <img :src="getAvatarUrl(comment.author?.avatar)" alt="User Avatar" />
               </div>
               <div class="comment-content">
@@ -221,6 +232,16 @@
                   <div class="comment-timestamp">{{ comment.createdAt ? new Date(comment.createdAt).toLocaleString('id-ID', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: 'short', year: 'numeric' }) : (comment.time || '-') }}</div>
                 </div>
                 <div class="comment-text">{{ comment.content || comment.text || comment.comment || '-' }}</div>
+=======
+                <img :src="comment.avatar" alt="User Avatar" />
+              </div>
+              <div class="comment-content">
+                <div class="comment-header">
+                  <div class="comment-username">{{ comment.username }}</div>
+                  <div class="comment-timestamp">{{ comment.timestamp }}</div>
+                </div>
+                <div class="comment-text">{{ comment.content }}</div>
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 
                 <!-- Action buttons untuk setiap komentar -->
                 <div class="comment-actions">
@@ -277,7 +298,11 @@
 
         <div class="comment-modal-footer">
           <div class="comment-input-container">
+<<<<<<< HEAD
             <img :src="getAvatarUrl(post.avatar)" alt="User Avatar" class="comment-avatar-input" />
+=======
+            <img :src="post.avatar" alt="User Avatar" class="comment-avatar-input" />
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
             <div class="comment-form">
               <input
                 type="text"
@@ -360,7 +385,10 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import { getAvatarUrl } from '@/utils/avatar'
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 export default {
   name: 'FeedItem',
   props: {
@@ -384,6 +412,7 @@ export default {
       commentLikes: {},
       commentReplies: {},
       likedComments: {},
+<<<<<<< HEAD
 
       // Menu and Report states
       showMenu: false,
@@ -456,18 +485,43 @@ export default {
         this.isLiked = updatedPost.likes.some(like => like.id === this.$root.currentUserId)
       } catch (err) {
         alert(err.message || 'Gagal menyimpan like')
+=======
+    }
+  },
+  methods: {
+    toggleLike() {
+      this.isLiked = !this.isLiked
+
+      if (this.isLiked) {
+        this.likeCount++
+      } else if (this.likeCount > 0) {
+        this.likeCount--
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
       }
     },
     toggleCommentLike(commentIndex) {
       this.likedComments[commentIndex] = !this.likedComments[commentIndex]
+<<<<<<< HEAD
+=======
+
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
       if (this.likedComments[commentIndex]) {
         this.commentLikes[commentIndex]++
       } else if (this.commentLikes[commentIndex] > 0) {
         this.commentLikes[commentIndex]--
       }
+<<<<<<< HEAD
     },
     toggleComment() {
       this.showCommentModal = !this.showCommentModal
+=======
+
+      console.log(`Toggle like for comment ${commentIndex}:`, this.likedComments[commentIndex])
+    },
+    toggleComment() {
+      this.showCommentModal = !this.showCommentModal
+      console.log('Toggle comment modal:', this.showCommentModal)
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
     },
     toggleReply(commentIndex) {
       console.log(`Toggle reply for comment ${commentIndex}`)
@@ -475,6 +529,7 @@ export default {
     closeModal() {
       this.showCommentModal = false
     },
+<<<<<<< HEAD
     async submitComment() {
       if (this.newComment.trim() === '') return
       try {
@@ -513,13 +568,44 @@ export default {
       }
     },
     sharePost() {
+=======
+    submitComment() {
+      if (this.newComment.trim() === '') return
+
+      console.log('Submit comment:', this.newComment)
+      this.newComment = ''
+    },
+    handleKeydown(e) {
+      if (e.key === 'Escape') {
+        if (this.showCommentModal) {
+          this.closeModal()
+        }
+        if (this.showShareModal) {
+          this.closeShareModal()
+        }
+      }
+    },
+    toggleSaved() {
+      this.isSaved = !this.isSaved
+      console.log('Saved state:', this.isSaved)
+    },
+    sharePost() {
+      console.log('Share post clicked')
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
       this.showShareModal = true
     },
     closeShareModal() {
       this.showShareModal = false
+<<<<<<< HEAD
       this.isCopied = false
     },
     generateShareLink() {
+=======
+      this.isCopied = false // Reset status copied
+    },
+    generateShareLink() {
+      // Generate link berdasarkan ID post atau URL saat ini
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
       const postId = this.post.id || Math.random().toString(36).substr(2, 9)
       const baseUrl = window.location.origin
       this.shareLink = `${baseUrl}/post/${postId}`
@@ -528,13 +614,26 @@ export default {
       try {
         await navigator.clipboard.writeText(this.shareLink)
         this.isCopied = true
+<<<<<<< HEAD
+=======
+
+        // Reset status copied setelah 2 detik
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
         setTimeout(() => {
           this.isCopied = false
         }, 2000)
       } catch {
+<<<<<<< HEAD
         this.$refs.shareLinkInput.select()
         document.execCommand('copy')
         this.isCopied = true
+=======
+        // Fallback untuk browser yang tidak support clipboard API
+        this.$refs.shareLinkInput.select()
+        document.execCommand('copy')
+        this.isCopied = true
+
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
         setTimeout(() => {
           this.isCopied = false
         }, 2000)
@@ -558,6 +657,7 @@ export default {
       const d = new Date(ts)
       return d.toLocaleString('id-ID', { dateStyle: 'medium', timeStyle: 'short' })
     },
+<<<<<<< HEAD
 
     // New menu and report methods
     getAvatarUrl,
@@ -627,6 +727,17 @@ export default {
     window.addEventListener('keydown', this.handleKeydown)
     this.generateShareLink()
 
+=======
+  },
+  created() {
+    // Tambahkan event listener untuk tombol Escape
+    window.addEventListener('keydown', this.handleKeydown)
+
+    // Generate share link berdasarkan ID post
+    this.generateShareLink()
+
+    // Inisialisasi data komentar
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
     if (this.post.comments) {
       this.post.comments.forEach((comment, index) => {
         this.commentLikes[index] = comment.likes || 0
@@ -639,6 +750,10 @@ export default {
     this.commentCount = this.post.comments ? this.post.comments.length : 0
   },
   beforeUnmount() {
+<<<<<<< HEAD
+=======
+    // Hapus event listener saat komponen dihapus
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
     window.removeEventListener('keydown', this.handleKeydown)
   },
 }
@@ -646,6 +761,7 @@ export default {
 
 <style scoped>
 @import url('@/assets/styles/FeedItem.css');
+<<<<<<< HEAD
 
 /* Additional styles for menu and report modal */
 .menu-container {
@@ -944,4 +1060,6 @@ export default {
     font-size: 14px;
   }
 }
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 </style>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 -- Follows table for user follow/following
 CREATE TABLE IF NOT EXISTS "Follows" (
     id SERIAL PRIMARY KEY,
@@ -7,6 +8,8 @@ CREATE TABLE IF NOT EXISTS "Follows" (
     "updatedAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     UNIQUE ("followerId", "followingId")
 );
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
 -- Create database (run this as a superuser, or skip if already created)
 CREATE DATABASE gundarconnect;
 \c gundarconnect;
@@ -53,6 +56,7 @@ CREATE TABLE IF NOT EXISTS "PostLikes" (
     "userId" INTEGER REFERENCES "Users"(id) ON DELETE CASCADE,
     UNIQUE ("postId", "userId")
 );
+<<<<<<< HEAD
 
 -- About table for user profile 'About' tab
 CREATE TABLE IF NOT EXISTS "About" (
@@ -67,3 +71,5 @@ CREATE TABLE IF NOT EXISTS "About" (
     "createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
