@@ -5,8 +5,14 @@
       <ul>
         <li>
           <a href="#" class="sidebar-item" data-tooltip="Beranda" @click="goToPage('/home')">
+<<<<<<< HEAD
             <i class="icon home-icon"></i>
           </a>
+=======
+          <i class="icon home-icon"></i>
+</a>
+
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
         </li>
         <li>
           <a href="#" class="sidebar-item" data-tooltip="Pencarian" @click="openSearchModal">
@@ -35,7 +41,18 @@
         <div class="search-modal-header">
           <h2>Pencarian</h2>
           <button class="close-search-btn" @click="closeSearchModal">
+<<<<<<< HEAD
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+=======
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
               <line x1="18" y1="6" x2="6" y2="18"></line>
               <line x1="6" y1="6" x2="18" y2="18"></line>
             </svg>
@@ -45,7 +62,19 @@
         <!-- Search Input -->
         <div class="search-input-container">
           <div class="search-input-wrapper">
+<<<<<<< HEAD
             <svg class="search-input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+=======
+            <svg
+              class="search-input-icon"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
@@ -58,7 +87,18 @@
               ref="searchInput"
             />
             <button v-if="searchQuery" @click="clearSearch" class="clear-search-btn">
+<<<<<<< HEAD
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+=======
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
                 <line x1="18" y1="6" x2="6" y2="18"></line>
                 <line x1="6" y1="6" x2="18" y2="18"></line>
               </svg>
@@ -66,6 +106,7 @@
           </div>
         </div>
 
+<<<<<<< HEAD
         <!-- Search Results -->
         <div class="search-content">
   <div v-if="searchResults.length > 0">
@@ -94,11 +135,43 @@
     </div>
   </div>
 </div>
+=======
+        <!-- Search Content -->
+        <div class="search-content">
+          <div class="search-empty-state">
+            <div class="empty-state-content">
+              <div class="empty-state-icon">
+                <svg
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                >
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </div>
+              <h3>Mulai Pencarian</h3>
+              <p>Ketik kata kunci untuk mencari postingan, pengguna, atau topik yang menarik</p>
+            </div>
+          </div>
+        </div>
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
       </div>
     </div>
 
     <!-- Notification Modal -->
+<<<<<<< HEAD
     <div v-if="showNotificationModal" class="notification-modal-overlay" @click.self="closeNotificationModal">
+=======
+    <div
+      v-if="showNotificationModal"
+      class="notification-modal-overlay"
+      @click.self="closeNotificationModal"
+    >
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
       <div class="notification-modal">
         <!-- Modal Header -->
         <div class="notification-modal-header">
@@ -108,7 +181,18 @@
               Tandai Semua Dibaca
             </button>
             <button class="close-notification-btn" @click="closeNotificationModal">
+<<<<<<< HEAD
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+=======
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
                 <line x1="18" y1="6" x2="6" y2="18"></line>
                 <line x1="6" y1="6" x2="18" y2="18"></line>
               </svg>
@@ -146,6 +230,7 @@
               @click="handleNotificationClick(notification)"
             >
               <div class="notification-avatar">
+<<<<<<< HEAD
   <!-- Fixed: Gunakan getAvatarUrl helper dan fallback yang proper -->
   <img
     v-if="notification.avatar && notification.avatar !== '/api/placeholder/40/40'"
@@ -156,6 +241,12 @@
   <div v-else class="avatar-placeholder">
     {{ (notification.username || 'U').charAt(0).toUpperCase() }}
   </div>
+=======
+                <img
+                  :src="notification.avatar || '/api/placeholder/40/40'"
+                  :alt="notification.username"
+                />
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
                 <!-- Notification type icon overlay -->
                 <div class="notification-type-icon" :class="notification.type">
                   <svg
@@ -305,23 +396,40 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import io from 'socket.io-client'
 import { getAvatarUrl } from '@/utils/avatar'
 
 export default {
   name: 'Sidebar',
+=======
+<<<<<<< HEAD
+import { onMounted } from 'vue'
+import io from 'socket.io-client'
+
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
+export default {
+  name: 'App',
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
   data() {
     return {
       // Search modal states
       showSearchModal: false,
       searchQuery: '',
+<<<<<<< HEAD
       searchResults: [],
+=======
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
 
       // Notification modal states
       showNotificationModal: false,
       activeNotificationFilter: 'all',
       isLoadingNotifications: false,
+<<<<<<< HEAD
       notifications: [],
+=======
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
 
       // Notification filters
       notificationFilters: [
@@ -331,7 +439,72 @@ export default {
         { id: 'follow', label: 'Mengikuti', count: 0 },
         { id: 'mention', label: 'Sebutan', count: 0 },
       ],
+<<<<<<< HEAD
       socket: null
+=======
+
+      // Sample notifications data
+      notifications: [
+        {
+          id: 1,
+          type: 'like',
+          username: 'Sopo',
+          avatar: '/api/placeholder/40/40',
+          message: 'menyukai postingan Anda',
+          postContent: 'Tips mahasiswa baru yang harus diperhatikan...',
+          timestamp: '2 menit lalu',
+          isRead: false,
+        },
+        {
+          id: 2,
+          type: 'comment',
+          username: 'jane_smith',
+          avatar: '/api/placeholder/40/40',
+          message: 'mengomentari postingan Anda',
+          postContent: 'Tips mahasiswa baru yang harus diperhatikan...',
+          timestamp: '15 menit lalu',
+          isRead: false,
+        },
+        {
+          id: 3,
+          type: 'follow',
+          username: 'alex_dev',
+          avatar: '/api/placeholder/40/40',
+          message: 'mulai mengikuti Anda',
+          timestamp: '1 jam lalu',
+          isRead: false,
+        },
+        {
+          id: 4,
+          type: 'mention',
+          username: 'sarah_tech',
+          avatar: '/api/placeholder/40/40',
+          message: 'menyebut Anda dalam komentar',
+          postContent: 'JavaScript framework comparison...',
+          timestamp: '2 jam lalu',
+          isRead: true,
+        },
+        {
+          id: 5,
+          type: 'like',
+          username: 'mike_coder',
+          avatar: '/api/placeholder/40/40',
+          message: 'menyukai komentar Anda',
+          timestamp: '3 jam lalu',
+          isRead: true,
+        },
+        {
+          id: 6,
+          type: 'comment',
+          username: 'lisa_designer',
+          avatar: '/api/placeholder/40/40',
+          message: 'mengomentari postingan Anda',
+          postContent: 'UI/UX design principles...',
+          timestamp: '5 jam lalu',
+          isRead: true,
+        },
+      ],
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
     }
   },
   computed: {
@@ -345,6 +518,7 @@ export default {
       return this.notifications.filter((notif) => notif.type === this.activeNotificationFilter)
     },
   },
+<<<<<<< HEAD
   mounted() {
     this.loadNotifications()
     this.setupSocketIO()
@@ -371,19 +545,92 @@ export default {
       this.$router.push(`/post/${result.id}`);
     },
 
+=======
+<<<<<<< HEAD
+  mounted() {
+    const token = localStorage.getItem('token')
+    fetch('http://localhost:5000/api/notifications', {
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
+      .then(res => res.ok ? res.json() : [])
+      .then(notifData => {
+        if (Array.isArray(notifData)) {
+          this.notifications = notifData.map(n => ({
+            id: n.id,
+            type: n.type,
+            username: n.actor?.fullName || n.actor?.username || '-',
+            avatar: n.actor?.avatar || '/api/placeholder/40/40',
+            message: n.message,
+            postContent: n.postId ? 'Lihat post' : '',
+            timestamp: new Date(n.createdAt).toLocaleString('id-ID', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: 'short', year: 'numeric' }),
+            isRead: n.isRead
+          }))
+        }
+      })
+      .catch(() => {})
+
+    // Socket.io setup
+    const userId = localStorage.getItem('userId')
+    this.socket = io('http://localhost:5000', {
+      auth: { token }
+    })
+    this.socket.on('connect', () => {
+      this.socket.emit('identify', userId)
+    })
+    this.socket.on('notification', notif => {
+      this.notifications.unshift({
+        id: notif.id,
+        type: notif.type,
+        username: notif.actor?.fullName || notif.actor?.username || '-',
+        avatar: notif.actor?.avatar || '/api/placeholder/40/40',
+        message: notif.message,
+        postContent: notif.postId ? 'Lihat post' : '',
+        timestamp: new Date().toLocaleString('id-ID', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: 'short', year: 'numeric' }),
+        isRead: false
+      })
+    })
+  },
+  beforeUnmount() {
+    if (this.socket) this.socket.disconnect()
+=======
+  created() {
+    // Update filter counts
+    this.updateFilterCounts()
+
+    // Event listener untuk keyboard shortcuts
+    window.addEventListener('keydown', this.handleKeyboardShortcuts)
+  },
+  beforeUnmount() {
+    window.removeEventListener('keydown', this.handleKeyboardShortcuts)
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
+  },
+  methods: {
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
     // Search methods
     openSearchModal() {
       this.showSearchModal = true
       this.$nextTick(() => {
+<<<<<<< HEAD
         if (this.$refs.searchInput) this.$refs.searchInput.focus()
       })
     },
+=======
+        this.$refs.searchInput?.focus()
+      })
+    },
+
+    goToPage(path) {
+    this.$router.push(path);
+  },
+
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
     closeSearchModal() {
       this.showSearchModal = false
       this.clearSearch()
     },
     clearSearch() {
       this.searchQuery = ''
+<<<<<<< HEAD
       this.searchResults = []
     },
     async handleSearchInput() {
@@ -406,11 +653,24 @@ export default {
     this.searchResults = []
   }
 },
+=======
+    },
+    handleSearchInput() {
+      // Search logic here
+    },
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
 
     // Notification methods
     openNotificationModal() {
       this.showNotificationModal = true
+<<<<<<< HEAD
       this.isLoadingNotifications = true
+=======
+      // Mark as opened (for read status updates)
+      this.isLoadingNotifications = true
+
+      // Simulate loading
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
       setTimeout(() => {
         this.isLoadingNotifications = false
       }, 500)
@@ -428,6 +688,7 @@ export default {
         this.updateFilterCounts()
       }
     },
+<<<<<<< HEAD
     async markAllAsRead() {
       const token = localStorage.getItem('token')
       try {
@@ -442,12 +703,20 @@ export default {
       } catch (error) {
         console.error('Failed to mark all as read:', error)
       }
+=======
+    markAllAsRead() {
+      this.notifications.forEach((notif) => {
+        notif.isRead = true
+      })
+      this.updateFilterCounts()
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
     },
     deleteNotification(notificationId) {
       this.notifications = this.notifications.filter((notif) => notif.id !== notificationId)
       this.updateFilterCounts()
     },
     handleNotificationClick(notification) {
+<<<<<<< HEAD
       if (!notification.isRead) {
         this.markAsRead(notification.id)
       }
@@ -455,6 +724,21 @@ export default {
       this.closeNotificationModal()
     },
     loadMoreNotifications() {
+=======
+      // Mark as read when clicked
+      if (!notification.isRead) {
+        this.markAsRead(notification.id)
+      }
+
+      // Navigate to related content
+      console.log('Navigate to notification content:', notification)
+
+      // Close modal after navigation
+      this.closeNotificationModal()
+    },
+    loadMoreNotifications() {
+      // Load more notifications from API
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
       console.log('Loading more notifications...')
     },
     updateFilterCounts() {
@@ -467,15 +751,36 @@ export default {
       })
     },
     handleKeyboardShortcuts(event) {
+<<<<<<< HEAD
+=======
+      // Open search with Ctrl/Cmd + K
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
       if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
         event.preventDefault()
         this.openSearchModal()
       }
+<<<<<<< HEAD
       if (event.key === 'Escape') {
         if (this.showSearchModal) this.closeSearchModal()
         if (this.showNotificationModal) this.closeNotificationModal()
       }
     },
+=======
+
+      // Close modals with Escape
+      if (event.key === 'Escape') {
+        if (this.showSearchModal) {
+          this.closeSearchModal()
+        }
+        if (this.showNotificationModal) {
+          this.closeNotificationModal()
+        }
+      }
+    },
+<<<<<<< HEAD
+
+    // Tambahkan fungsi untuk push notifikasi dari event like, comment, follow
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
     pushNotification({ type, username, avatar, message, postContent }) {
       this.notifications.unshift({
         id: Date.now(),
@@ -484,6 +789,7 @@ export default {
         avatar,
         message,
         postContent,
+<<<<<<< HEAD
         timestamp: new Date().toLocaleString('id-ID', {
           hour: '2-digit',
           minute: '2-digit',
@@ -560,6 +866,15 @@ export default {
       })
     }
   }
+=======
+        timestamp: new Date().toLocaleString('id-ID', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: 'short', year: 'numeric' }),
+        isRead: false,
+      })
+    },
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
+  },
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
 }
 </script>
 

@@ -32,8 +32,11 @@ Comment.init({
   modelName: 'Comment'
 });
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
 // Associations
 User.hasMany(Post, { foreignKey: 'authorId', as: 'posts' });
 Post.belongsTo(User, { foreignKey: 'authorId', as: 'author' });
@@ -47,4 +50,8 @@ User.hasMany(Comment, { foreignKey: 'authorId', as: 'userComments' });
 Post.belongsToMany(User, { through: 'PostLikes', as: 'likes', foreignKey: 'postId' });
 User.belongsToMany(Post, { through: 'PostLikes', as: 'likedPosts', foreignKey: 'userId' });
 
+<<<<<<< HEAD
 module.exports = { Post, Comment };
+=======
+module.exports = { Post, Comment };
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c

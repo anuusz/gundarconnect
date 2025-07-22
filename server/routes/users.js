@@ -2,8 +2,16 @@ const express = require('express');
 const router = express.Router();
 const { protect } = require('../middleware/auth');
 const User = require('../models/User');
+<<<<<<< HEAD
 const { io } = require('../app');
 const Notification = require('../models/Notification');
+=======
+<<<<<<< HEAD
+const { io } = require('../app');
+const Notification = require('../models/Notification');
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
 
 // Get all users
 router.get('/', protect, async (req, res) => {
@@ -38,6 +46,10 @@ router.get('/search', protect, async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
 // Follow user
 router.post('/:userId/follow', protect, async (req, res) => {
   try {
@@ -63,4 +75,9 @@ router.post('/:userId/follow', protect, async (req, res) => {
   }
 });
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
 module.exports = router;

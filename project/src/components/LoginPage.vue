@@ -222,7 +222,14 @@ export default {
         const data = await response.json()
         if (response.ok) {
           localStorage.setItem('token', data.token)
+<<<<<<< HEAD
           localStorage.setItem('user', JSON.stringify(data.user))
+=======
+<<<<<<< HEAD
+          localStorage.setItem('user', JSON.stringify(data.user))
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
           showMessage('Login berhasil! Selamat datang di GundarConnect! 🎉', 'success')
           setTimeout(() => {
             router.push('/home')

@@ -1,8 +1,17 @@
 /* @import url("styles/FeedItem.css"); */
+<<<<<<< HEAD
 body {
+=======
+
+body {
+  display: block;
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
   background-color: #0e061a;
   margin: 0;
   padding: 0;
   color: white !important;
+<<<<<<< HEAD
   /* HAPUS display: block; */
+=======
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
 }

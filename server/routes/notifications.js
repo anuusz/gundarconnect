@@ -29,6 +29,7 @@ router.post('/:id/read', protect, async (req, res) => {
     }
     notif.isRead = true;
     await notif.save();
+<<<<<<< HEAD
     
     // Emit socket event
     req.io.emit(`notification-update-${req.user.id}`, { 
@@ -36,12 +37,15 @@ router.post('/:id/read', protect, async (req, res) => {
       notificationId: notif.id 
     });
     
+=======
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
     res.json({ message: 'Notification marked as read' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
+<<<<<<< HEAD
 // Mark all notifications as read
 router.post('/mark-all-read', protect, async (req, res) => {
   try {
@@ -64,6 +68,8 @@ router.post('/mark-all-read', protect, async (req, res) => {
   }
 });
 
+=======
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
 // Delete notification
 router.delete('/:id', protect, async (req, res) => {
   try {
@@ -72,6 +78,7 @@ router.delete('/:id', protect, async (req, res) => {
       return res.status(404).json({ message: 'Notification not found' });
     }
     await notif.destroy();
+<<<<<<< HEAD
     
     // Emit socket event
     req.io.emit(`notification-update-${req.user.id}`, { 
@@ -79,12 +86,15 @@ router.delete('/:id', protect, async (req, res) => {
       notificationId: notif.id 
     });
     
+=======
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
     res.json({ message: 'Notification deleted' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
 
+<<<<<<< HEAD
 // Get unread notifications count
 router.get('/unread-count', protect, async (req, res) => {
   try {
@@ -101,3 +111,6 @@ router.get('/unread-count', protect, async (req, res) => {
 });
 
 module.exports = router;
+=======
+module.exports = router;
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c

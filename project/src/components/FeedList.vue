@@ -8,6 +8,10 @@
         readonly
       />
     </div>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
 
     <!-- Feed Items -->
     <div v-for="post in posts" :key="post.id" class="feed-item-wrapper">
@@ -85,6 +89,14 @@
     </div>
 
     <!-- New Post Modal -->
+<<<<<<< HEAD
+=======
+=======
+    <FeedItem v-for="post in posts" :key="post.id" :post="post" />
+
+    <!-- Modal Popup -->
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
     <div v-if="showModal" class="modal-overlay" @click="closeModal">
       <div class="modal-content" @click.stop>
         <div class="modal-header">
@@ -96,6 +108,7 @@
         <div class="modal-body">
           <div class="user-info">
             <div class="user-avatar">
+<<<<<<< HEAD
   <img v-if="currentUserAvatar" :src="currentUserAvatar" alt="User Avatar" />
   <div v-else class="avatar-placeholder">
     {{ (currentUserName || 'U').charAt(0).toUpperCase() }}
@@ -103,6 +116,16 @@
 </div>
             <div class="user-details">
               <span class="username">{{ currentUserName }}</span>
+=======
+              <img src="../assets/profile.png" alt="User Avatar" />
+            </div>
+            <div class="user-details">
+<<<<<<< HEAD
+              <span class="username">{{ currentUserName }}</span>
+=======
+              <span class="username">AdminProd</span>
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
             </div>
           </div>
 
@@ -125,6 +148,19 @@
                     <polyline points="21,15 16,10 5,21"/>
                   </svg>
                 </button>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+                <!-- <button class="action-btn" title="Add GIF">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="6" width="20" height="12" rx="2"/>
+                    <circle cx="8" cy="12" r="2"/>
+                    <circle cx="16" cy="12" r="2"/>
+                  </svg>
+                </button> -->
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
                 <button class="action-btn" title="Add Poll">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <line x1="12" y1="20" x2="12" y2="10"/>
@@ -132,6 +168,18 @@
                     <line x1="6" y1="20" x2="6" y2="16"/>
                   </svg>
                 </button>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+                <!-- <button class="action-btn" title="Add Location">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                </button> -->
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
               </div>
             </div>
           </div>
@@ -151,9 +199,14 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import { ref, onMounted, nextTick, computed } from 'vue'
 import FeedItem from './FeedItem.vue'
 import { getAvatarUrl } from '@/utils/avatar'
+=======
+import { ref, onMounted, nextTick } from 'vue'
+import FeedItem from './FeedItem.vue'
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
 
 export default {
   name: 'FeedList',
@@ -166,6 +219,10 @@ export default {
     const newPost = ref('')
     const postTextarea = ref(null)
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
     // Menu states
     const showMenu = ref(false)
     const currentPostId = ref(null)
@@ -221,6 +278,7 @@ export default {
       }
     ])
 
+<<<<<<< HEAD
     // Current user data - TAMBAH INI SAJA
 const currentUser = ref(null)
 
@@ -252,6 +310,17 @@ const currentUserAvatar = computed(() => {
     // Existing functions
     const fetchPosts = async () => {
       try {
+=======
+    // Existing functions
+    const fetchPosts = async () => {
+      try {
+=======
+    // Ambil feed dari backend
+    const fetchPosts = async () => {
+      try {
+        // Hapus pengecekan token, biarkan request tanpa Authorization jika token tidak ada
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
         const token = localStorage.getItem('token')
         const headers = token ? { 'Authorization': `Bearer ${token}` } : {}
         const res = await fetch('http://localhost:5000/api/posts', {
@@ -259,7 +328,15 @@ const currentUserAvatar = computed(() => {
         })
         if (!res.ok) throw new Error('Gagal memuat feed')
         const data = await res.json()
+<<<<<<< HEAD
         console.log('FEED DATA:', data)
+=======
+<<<<<<< HEAD
+        console.log('FEED DATA:', data)
+=======
+        console.log('FEED DATA:', data) // Tambahkan log ini untuk debug
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
         posts.value = Array.isArray(data) ? data : []
       } catch (err) {
         posts.value = []
@@ -267,11 +344,15 @@ const currentUserAvatar = computed(() => {
       }
     }
 
+<<<<<<< HEAD
     onMounted(() => {
       fetchPosts()
       // Get current user data
       currentUser.value = getCurrentUser()
     })
+=======
+    onMounted(fetchPosts)
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
 
     const openNewThreadModal = () => {
       showModal.value = true
@@ -287,6 +368,13 @@ const currentUserAvatar = computed(() => {
       newPost.value = ''
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+    // Submit post ke backend
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
     const submitPost = async () => {
       if (newPost.value.trim()) {
         try {
@@ -303,7 +391,15 @@ const currentUserAvatar = computed(() => {
             })
           })
           if (!res.ok) throw new Error('Gagal membuat postingan')
+<<<<<<< HEAD
           await fetchPosts()
+=======
+<<<<<<< HEAD
+          await fetchPosts()
+=======
+          await fetchPosts() // Ambil ulang feed setelah post sukses
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
           closeModal()
         } catch (err) {
           alert(err.message || 'Gagal membuat postingan')
@@ -318,6 +414,10 @@ const currentUserAvatar = computed(() => {
       }
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
     // Menu functions
     const showPostMenu = ({ postId, event }) => {
       currentPostId.value = postId
@@ -406,11 +506,20 @@ const currentUserAvatar = computed(() => {
       currentUserName = user?.fullName || user?.username || 'User';
     } catch (e) {}
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
     return {
       posts,
       showModal,
       newPost,
       postTextarea,
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
       showMenu,
       menuPosition,
       showReportModal,
@@ -430,9 +539,19 @@ const currentUserAvatar = computed(() => {
       closeReportModal,
       selectReason,
       submitReport,
+<<<<<<< HEAD
       currentUserName,
       currentUserAvatar,
       getAvatarUrl
+=======
+      currentUserName
+=======
+      openNewThreadModal,
+      closeModal,
+      submitPost,
+      adjustTextareaHeight
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
     }
   },
 }
@@ -470,6 +589,10 @@ const currentUserAvatar = computed(() => {
   color: #8f8f9d;
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
 .feed-item-wrapper {
   position: relative;
 }
@@ -663,6 +786,12 @@ const currentUserAvatar = computed(() => {
 }
 
 /* Existing Modal Styles */
+<<<<<<< HEAD
+=======
+=======
+/* Modal Styles */
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -845,6 +974,7 @@ const currentUserAvatar = computed(() => {
   background-color: #2a3e6a;
 }
 
+<<<<<<< HEAD
 .avatar-placeholder {
   width: 40px;
   height: 40px;
@@ -858,6 +988,8 @@ const currentUserAvatar = computed(() => {
   font-size: 16px;
 }
 
+=======
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
 /* Responsive */
 @media (max-width: 768px) {
   .modal-content {
@@ -868,9 +1000,18 @@ const currentUserAvatar = computed(() => {
   .feed-list {
     width: 90%;
   }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
 
   .dropdown-menu {
     min-width: 180px;
   }
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
 }
 </style>

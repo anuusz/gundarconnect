@@ -1,10 +1,48 @@
 <template>
   <div id="app">
+<<<<<<< HEAD
     <RouterView />
+=======
+<<<<<<< HEAD
+    <Sidebar />
+    <div :class="mainContentClass">
+      <RouterView />
+    </div>
+=======
+    <RouterView />
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
   </div>
 </template>
 
 <script setup>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+import { RouterView, useRoute } from 'vue-router'
+import Sidebar from './components/sidebar.vue'
+const route = useRoute()
+// const mainContentClass = computed(() => {
+//   return route.path === '/login' ? 'no-padding' : 'main-content'
+// })
+</script>
+
+<style scoped>
+.main-content {
+  padding-top: 64px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+.no-padding {
+  padding-top: 0;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+
+=======
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
 import { RouterView } from 'vue-router'
 </script>
 
@@ -14,6 +52,10 @@ import { RouterView } from 'vue-router'
 
 
 <style scoped>
+<<<<<<< HEAD
+=======
+>>>>>>> fb37265c2135560a94d7333e047a456d37bab737
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
 p {
   color: white;
 }
@@ -95,4 +137,8 @@ nav a:first-of-type {
     margin-top: 1rem;
   }
 }
+<<<<<<< HEAD
 </style>  
+=======
+</style>
+>>>>>>> 3f31e7a4a7e14e2527c841bb1345c7dd6cf03f5c
